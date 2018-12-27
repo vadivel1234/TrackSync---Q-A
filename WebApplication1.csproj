@@ -77,6 +77,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.EJ">
+      <HintPath>..\packages\Syncfusion.EJ.15.1450.0.33\lib\net45\Syncfusion.EJ.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ.MVC">
+      <HintPath>..\packages\Syncfusion.EJ.MVC.15.1400.0.33\lib\net45\Syncfusion.EJ.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Mvc">
+      <HintPath>..\packages\Syncfusion.Grid.Mvc.15.1400.0.33\lib\net45\Syncfusion.Grid.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -297,7 +306,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57761</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57761/</IISUrl>
+          <IISUrl>http://localhost:57762/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
