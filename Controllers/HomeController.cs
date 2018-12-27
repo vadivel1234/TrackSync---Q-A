@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Syncfusion.JavaScript;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -11,6 +13,14 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult SearchCollection(DataManager dataManager, string field)
+        {
+            var list = QueryResultModel.GetStackOverflowQueries(field);
+            var customerCollection = Json(new { result = list, count = list.Count }, JsonRequestBehavior.AllowGet);
+            customerCollection.MaxJsonLength = int.MaxValue;
+            return customerCollection;
         }
 
         public ActionResult About()
