@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/content/stylesheets/components/bootstrap/Integrity/bootstrap3.7.1.min.css?v1">
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/15.1.0.33/js/web/flat-azure/ej.web.all.new.min.css">
 
 </head>
 <body>
@@ -31,6 +33,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("BodySection", required: false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
@@ -40,5 +43,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.sessionall.min.js?v1" defer></script>
+    <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.all.new.min.js?v1"></script>   
 </body>
 </html>
