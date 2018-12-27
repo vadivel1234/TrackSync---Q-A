@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - TrackSync-Q&A</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/content/stylesheets/components/bootstrap/Integrity/bootstrap3.7.1.min.css?v1">
     <link rel="stylesheet" href="https://cdn.syncfusion.com/15.1.0.33/js/web/flat-azure/ej.web.all.new.min.css">
 
     <!-- Custom fonts for this template -->
@@ -21,6 +20,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    @RenderSection("Style", required: false)
 
 </head>
 <body>
