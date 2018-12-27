@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - TrackSync-Q&A</title>
     
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Style", required: false)
     <link rel="stylesheet" href="https://cdn.syncfusion.com/15.1.0.33/js/web/flat-azure/ej.web.all.new.min.css">
 
     <!-- Custom fonts for this template -->
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
     @Styles.Render("~/Content/css")
+
 </head>
 <body>
     <!-- Navigation -->
@@ -100,7 +102,10 @@
     @RenderSection("scripts", required: false)
     @Html.EJ().ScriptManager()
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.sessionall.min.js?v1" defer></script>
+    <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/MicrosoftMvcAjax.js" defer></script>
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.all.new.min.js?v1"></script>   
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/Scripts/js/jsrender.min.js"></script>
     <script src="//cdn.syncfusion.com/scripts/components/essentialjs/ej.grid.all_15.min.js"></script>   
 </body>
 </html>
