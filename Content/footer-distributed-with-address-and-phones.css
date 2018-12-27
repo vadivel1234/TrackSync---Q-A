@@ -1,13 +1,14 @@
 .footer-distributed{
-	background-color: #292c2f;
+	background-color: midnightblue;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
-	width: 100%;
+	width: 120%;
 	text-align: left;
 	font: bold 16px sans-serif;
 
 	padding: 55px 50px;
 	margin-top: 80px;
+	margin-left: -80px;
 }
 
 .footer-distributed .footer-left,
@@ -64,7 +65,7 @@
 }
 
 .footer-distributed .footer-center i{
-	background-color:  #33383b;
+	background-color:  #ee0979;
 	color: #ffffff;
 	font-size: 25px;
 	width: 38px;
@@ -132,7 +133,7 @@
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
-	background-color:  #33383b;
+	background-color:  #ee0979;
 	border-radius: 2px;
 
 	font-size: 20px;
