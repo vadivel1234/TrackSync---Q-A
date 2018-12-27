@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - TrackSync-Q&A</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/content/stylesheets/components/bootstrap/Integrity/bootstrap3.7.1.min.css?v1">
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/15.1.0.33/js/web/flat-azure/ej.web.all.new.min.css">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -43,6 +45,7 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("BodySection", required: false)
         <hr />
         <!-- The content of your page would go here. -->
         <footer class="footer-distributed">
@@ -94,6 +97,11 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
+    @Html.EJ().ScriptManager()
+    <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.sessionall.min.js?v1" defer></script>
+    <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.all.new.min.js?v1"></script>   
+    <script src="//cdn.syncfusion.com/scripts/components/essentialjs/ej.grid.all_15.min.js"></script>   
 </body>
 </html>
