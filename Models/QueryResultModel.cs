@@ -1,113 +1,60 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace WebApplication1.Models
 {
     public class QueryResultModel
-    {
-        public static List<QuerySearchFields> GetQueryResult(string serachQuery)
+    {       
+        public static List<QueryDetails> GetStackOverflowQueries(string search)
         {
-            var listQuery = new List<QuerySearchFields>();
-            try
+            List<QueryDetails> queriesInformation = new List<QueryDetails>();
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q="+search +"&site=stackoverflow");
+            httpWebRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            string responseText;
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var question = new QuerySearchFields
-                {
-                    isAnswered = true,
-                    lastActivityDate = DateTime.Now,
-                    creationDate = DateTime.Now.AddDays(-2),
-                    lastEditDate = DateTime.Now.AddDays(-1),
-                    link = "https://stackoverflow.com/questions/53943076/aws-services-enable-another-region",
-                    title = "AWS services- enable another region",
-                    questionID = "53943076",
-                    source = "Stackoverflow",
-                    score = 1,
-                    viewCount = 10,
-                    answerCount=1
-                };
-
-                listQuery.Add(question);
-
-                var question1 = new QuerySearchFields
-                {
-                    isAnswered = true,
-                    lastActivityDate = DateTime.Now.AddDays(-3),
-                    creationDate = DateTime.Now.AddDays(-4),
-                    lastEditDate = DateTime.Now.AddDays(-1),
-                    link = "https://meta.stackexchange.com/questions/319274/responsive-design-themes-what-can-sites-customize-and-how-can-they-get-changes?cb=1",
-                    title = "Responsive Design Themes - What can sites customize and how can they get changes implemented?",
-                    questionID = "319274",
-                    source = "Stackoverflow",
-                    score = 3,
-                    viewCount = 5,
-                    answerCount = 2
-                };
-
-                listQuery.Add(question1);
-
-                var question2 = new QuerySearchFields
-                {
-                    isAnswered = true,
-                    lastActivityDate = DateTime.Now,
-                    creationDate = DateTime.Now.AddDays(-3),
-                    lastEditDate = DateTime.Now.AddDays(-3),
-                    link = "https://meta.stackexchange.com/questions/312365/rollout-of-new-network-site-themes?noredirect=1&lq=1",
-                    title = "Rollout of new network site themes",
-                    questionID = "312365",
-                    source = "Stackoverflow",
-                    score = 4,
-                    viewCount = 8,
-                    answerCount = 2
-                };
-
-                listQuery.Add(question2);
-
-                var question3 = new QuerySearchFields
-                {
-                    isAnswered = false,
-                    lastActivityDate = DateTime.Now.AddDays(-12),
-                    creationDate = DateTime.Now.AddDays(-20),
-                    lastEditDate = DateTime.Now.AddDays(-15),
-                    link = "https://meta.stackexchange.com/questions/312180/favorite-tags-is-now-tag-watching?noredirect=1&lq=1",
-                    title = "'Favorite Tags' is now 'Tag Watching'",
-                    questionID = "312180",
-                    source = "Stackoverflow",
-                    score = 1,
-                    viewCount = 3,
-                    answerCount = 1
-                };
-
-                listQuery.Add(question3);
-
-                var question4 = new QuerySearchFields
-                {
-                    isAnswered = false,
-                    lastActivityDate = DateTime.Now,
-                    creationDate = DateTime.Now.AddDays(-2),
-                    lastEditDate = DateTime.Now.AddDays(-1),
-                    link = "https://worldbuilding.stackexchange.com/questions/134675/how-can-santa-defend-himself",
-                    title = "How can Santa defend himself?",
-                    questionID = "134675",
-                    source = "Stackoverflow",
-                    score = 13,
-                    viewCount = 50,
-                    answerCount = 49
-                };
-
-                listQuery.Add(question4);
+                responseText = streamReader.ReadToEnd();
             }
-            catch(Exception ex)
+            var jsonObj = JObject.Parse(responseText);
+            var values = (JArray)jsonObj["items"];
+
+            foreach (var value in values)
             {
+                QueryDetails samp = new QueryDetails("StackOverflow", (bool)value["is_answered"], epoch.AddSeconds((int)value["last_activity_date"]), epoch.AddSeconds((int)value["creation_date"]), (string)value["link"], (string)value["title"], (string)value["question_id"], (int)value["score"], (int)value["view_count"], (int)value["answer_count"]);
+                queriesInformation.Add(samp);
 
-            }
-
-            return listQuery;
+            };
+            return queriesInformation;
         }
+
+        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
     }
 
-    public class QuerySearchFields
+    public class QueryDetails
     {
+        public QueryDetails(string SourceType, bool IsAnswered, DateTime Date, DateTime CreateDate, string Link, string Title, string QnID, int Score, int ViewCount, int AnswerCount)
+
+        {
+            this.source = SourceType;
+            this.isAnswered = IsAnswered;
+            this.lastActivityDate = Date;
+            this.creationDate = CreateDate;
+            this.link = Link;
+            this.title = Title;
+            this.questionID = QnID;
+            this.score = Score;
+            this.viewCount = ViewCount;
+            this.answerCount = AnswerCount;
+        }
+
         public string source { get; set; }
          
         public bool isAnswered { get; set; }

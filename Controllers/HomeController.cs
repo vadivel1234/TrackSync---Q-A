@@ -15,9 +15,9 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public JsonResult SearchCollection(DataManager dataManager)
+        public JsonResult SearchCollection(DataManager dataManager, string field)
         {
-            var list = QueryResultModel.GetQueryResult("grid");
+            var list = QueryResultModel.GetStackOverflowQueries(field);
             var customerCollection = Json(new { result = list, count = list.Count }, JsonRequestBehavior.AllowGet);
             customerCollection.MaxJsonLength = int.MaxValue;
             return customerCollection;
