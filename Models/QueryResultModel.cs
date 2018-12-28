@@ -15,16 +15,30 @@ namespace WebApplication1.Models
         static string searchQuery;
 
         public int totalCount;
+        /// <summary>
+        /// Gets or sets a value of the FromDate.The member declare as public.
+        /// </summary>
+        public DateTime FromDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value of the ToDate.The member declare as public.
+        /// </summary>
+        public DateTime ToDate { get; set; }
         static List<QueryDetails> queriesInformationStatic = new List<QueryDetails>();
 
         List<QueryDetails> queriesInformation = new List<QueryDetails>();
 
         IEnumerable<QueryDetails> QueriesInformationEnumerable;
-        public List<QueryDetails> GetSerarchQuereies(DataManager dataManager, string serachField)
+        public List<QueryDetails> GetSerarchQuereies(DataManager dataManager, string serachField, string startDate, string endDate)
         {
             try
             {
+                if (!string.IsNullOrEmpty(startDate))
+                {
+                    this.FromDate = DateTime.Parse(startDate, null, System.Globalization.DateTimeStyles.None);
+                    this.ToDate = DateTime.Parse(endDate, null, System.Globalization.DateTimeStyles.None);
+                }
+
                 if (searchQuery != serachField)
                 {
                     GetStackOverflowQueries(serachField);
@@ -33,6 +47,11 @@ namespace WebApplication1.Models
                 else
                 {
                     queriesInformation = queriesInformationStatic;
+                }
+
+                if (!string.IsNullOrEmpty(startDate) && !string.IsNullOrEmpty(endDate))
+                {
+                    queriesInformation = queriesInformation.Where(x => x.creationDate >= FromDate && x.creationDate <= ToDate).ToList();
                 }
 
                 if (queriesInformation != null)
@@ -78,8 +97,8 @@ namespace WebApplication1.Models
                     }
 
                     this.queriesInformation = QueriesInformationEnumerable.ToList();
-                  
-                }                
+
+                }
 
             }
             catch (Exception ex)
@@ -101,7 +120,7 @@ namespace WebApplication1.Models
             foreach (var value in values)
             {
                 var res = value;
-                QueryDetails samp = new QueryDetails("Github", (DateTime)value["updated_at"], (DateTime)value["created_at"], (string)value["url"], (string)value["title"], (string)value["id"], int.Parse((string)value["comments"]), (int)Math.Ceiling((float)value["score"]));
+                QueryDetails samp = new QueryDetails("Github", (DateTime)value["updated_at"], (DateTime)value["created_at"], (string)value["html_url"], (string)value["title"], (string)value["id"], int.Parse((string)value["comments"]), (int)Math.Ceiling((float)value["score"]));
                 queriesInformation.Add(samp);
             }
 

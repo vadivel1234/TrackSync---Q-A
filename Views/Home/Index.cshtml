@@ -3,9 +3,9 @@
 }
 @section Style{
     <style>
-         #gridsearchResult_WaitingPopup{
-                display: none !important;
-            }
+        #gridsearchResult_WaitingPopup {
+            display: none !important;
+        }
 
         #custom-search-input {
             padding: 3px;
@@ -42,7 +42,7 @@
         * {
             box-sizing: border-box;
         }
-             
+
         #myVideo {
             position: fixed;
             right: 0;
@@ -63,19 +63,24 @@
         .e-grid .e-rowcell, .e-grid .e-indentcell {
             border-style: none !important;
         }
+
         .e-grid .e-headercell, .e-grid .e-grouptopleftcell {
             border-style: none !important;
         }
+
         .e-grid .e-filterbarcell, .e-grid .e-filterbarcelldisabled {
             border-style: none !important;
         }
+
         .e-grid tr.e-hover {
             background: #ffb3ec !important;
         }
+
         .e-grid td.e-active, .e-grid .e-form-titlebar {
             background: #ee0979 !important;
         }
     </style>
+    <link href="~/Scripts/js/daterangepicker.css" rel="stylesheet" />
 }
 
 
@@ -83,7 +88,7 @@
     <video autoplay muted loop id="myVideo">
         <source src="/animation.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
-    </video> 
+    </video>
 
     <script>
         var video = document.getElementById("myVideo");
@@ -116,16 +121,25 @@
                     </div>
                 </div>
             </div>
+            <div>
+
+            </div>
             <div class="searchresult" style="margin-top:30px;display:none">
-                <h4>
-                    Search Result
-                </h4>
+
+                <div id="datepicker" class="picker-bd-view" style="margin-bottom: 65px;">
+                    <span id="datepicker-heading">Created On</span><br />
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                        <span>Select Date</span> <b class="caret"></b>
+                    </div>
+                </div>
                 <div class="result-data">
+
                     <div id="gridsearchResult">
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="content">
             <h1>Query Filter</h1>
@@ -190,6 +204,7 @@
 }
 @section scripts
 {
-<script src="~/Scripts/js/WaitingPopup.js"></script>
+    <script src="~/Scripts/js/WaitingPopup.js"></script>
+    <script src="~/Scripts/js/daterangepicker.js"></script>
     <script src="~/Scripts/queryresult.js"></script>
 }

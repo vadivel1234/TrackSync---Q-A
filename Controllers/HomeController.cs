@@ -15,10 +15,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public JsonResult SearchCollection(DataManager dataManager, [Bind(Prefix = "$field")]string field)
+        public JsonResult SearchCollection(DataManager dataManager, [Bind(Prefix = "$field")]string field,[Bind(Prefix = "$startdate")] string startDate, [Bind(Prefix = "$enddate")] string endDate)
         {
+            this.TempData["customerStartDate"] = startDate;
+            this.TempData["customerEndDate"] = endDate;
+
             QueryResultModel query = new QueryResultModel();
-            var list = query.GetSerarchQuereies(dataManager, field);
+            var list = query.GetSerarchQuereies(dataManager, field, startDate, endDate);
             var customerCollection = Json(new { result = list, count = query.totalCount }, JsonRequestBehavior.AllowGet);
             customerCollection.MaxJsonLength = int.MaxValue;
             return customerCollection;
