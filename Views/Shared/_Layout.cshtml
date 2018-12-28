@@ -60,7 +60,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
-    @RenderSection("scripts", required: false)
 
     @Html.EJ().ScriptManager()
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.sessionall.min.js?v1" defer></script>
@@ -69,5 +68,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="~/Scripts/js/jsrender.min.js"></script>
     <script src="https://cdn.syncfusion.com/scripts/components/essentialjs/ej.grid.all_15.min.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

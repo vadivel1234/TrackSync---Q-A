@@ -3,6 +3,9 @@
 }
 @section Style{
     <style>
+         #gridsearchResult_WaitingPopup{
+                display: none !important;
+            }
 
         #custom-search-input {
             padding: 3px;
@@ -49,13 +52,12 @@
         }
 
         .content {
-            position: absolute;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
             color: #f1f1f1;
             width: 100%;
             padding: 20px;
-            margin-left: -90px;
+            margin-top: 90px;
         }
 
         .e-grid .e-rowcell, .e-grid .e-indentcell {
@@ -81,12 +83,7 @@
     <video autoplay muted loop id="myVideo">
         <source src="/animation.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
-    </video>
-
-    <div class="content">
-        <h1>Query Filter</h1>
-        <p>A common search engine to filter the queries posted in Stack Overflow, Quora, Github, etc related to the keyword provided. Using this web application, we can provide our response to all the customer / non-customer who posted their queries (either related to Syncfusion or not) anywhere in the few common sites we mentioned above. So that, customer will get satisfied and the problem will be resolved on customer end and customer full filled with good impression about Syncfusion customer experience.</p>
-    </div>
+    </video> 
 
     <script>
         var video = document.getElementById("myVideo");
@@ -105,7 +102,7 @@
     <section style="margin-top:-40px;position:absolute">
         <div class="container">
             <div class="row">
-                <div class="col-md-10" style="margin-left:300px">
+                <div style="margin-left:300px;width:400px;">
                     <h3 style="color:azure">Search</h3>
                     <div id="custom-search-input">
                         <div class="input-group col-md-12" style="padding-right:0px">
@@ -128,8 +125,14 @@
                     </div>
                 </div>
             </div>
+            
+        </div>
+        <div class="content">
+            <h1>Query Filter</h1>
+            <p>A common search engine to filter the queries posted in Stack Overflow, Quora, Github, etc related to the keyword provided. Using this web application, we can provide our response to all the customer / non-customer who posted their queries (either related to Syncfusion or not) anywhere in the few common sites we mentioned above. So that, customer will get satisfied and the problem will be resolved on customer end and customer full filled with good impression about Syncfusion customer experience.</p>
         </div>
     </section>
+
     @*<section class="details-card">
             <div class="container">
                 <div class="row">
@@ -187,5 +190,6 @@
 }
 @section scripts
 {
+<script src="~/Scripts/js/WaitingPopup.js"></script>
     <script src="~/Scripts/queryresult.js"></script>
 }
