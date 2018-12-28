@@ -17,9 +17,9 @@ $("#searchtext").keydown(function (e) {
 
 function GridSearch() {
     if (!$("#gridsearchResult").hasClass("e-grid")) {
-        var serachQuery = $('#searchtext').val().trim();;
+        var serachQuery = $('#searchtext').val().trim();
         var dataSource = ej.DataManager({
-            url: "/searchcollection/" + serachQuery, adaptor: "UrlAdaptor"
+            url: "/searchcollection", adaptor: "UrlAdaptor"
         });
 
         $("#gridsearchResult").ejGrid({
@@ -30,11 +30,12 @@ function GridSearch() {
             allowSelection: true,
             pageSettings: { pageSize: 10 },
             actionBegin: function (args) {
+                this.model.query._params.push({ key: "$field", value: $('#searchtext').val().trim() });
                 $(".searchresult").css("display", "block");
-                $("#search-section").showWaitingPopUp();
+                $("#gridsearchResult").showWaitingPopUp();
             },
             actionComplete: function (args) {
-                $("#search-section").removeWaitingPopUp();
+                $("#gridsearchResult").removeWaitingPopUp();
             },
             columns: [
                         { field: "source", headerText: "Source", width: 40 },

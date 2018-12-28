@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public JsonResult SearchCollection(DataManager dataManager, string field)
+        public JsonResult SearchCollection(DataManager dataManager, [Bind(Prefix = "$field")]string field)
         {
             QueryResultModel query = new QueryResultModel();
             var list = query.GetSerarchQuereies(dataManager, field);

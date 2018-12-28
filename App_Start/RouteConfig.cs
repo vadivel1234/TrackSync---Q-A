@@ -15,7 +15,7 @@ namespace WebApplication1
 
             routes.MapRoute(
               name: "Seacrh",
-              url: "searchcollection/{field}",
+              url: "searchcollection",
               defaults: new { controller = "Home", action = "SearchCollection", id = UrlParameter.Optional }
           );
 
