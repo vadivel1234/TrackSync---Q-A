@@ -86,6 +86,7 @@
         }
     </style>
     <link href="~/Scripts/js/daterangepicker.css" rel="stylesheet" />
+<link href="~/Scripts/js/bootstrap-multiselect.css" rel="stylesheet" />
 }
 
 
@@ -129,8 +130,12 @@
             <div>
 
             </div>
-            <div class="searchresult" style="margin-top:30px;display:none;margin-left: -81px !important;">
-
+            <div class="searchresult" style="margin-top:30px;display:block;margin-left: -81px !important;">
+                <select style="float: right; padding: 6px; margin-left :23px; margin-top :23px;" class="select-dropdown">
+                    <option value="0" selected>All</option>
+                    <option value="1">Stackoverflow</option>
+                    <option value="1">Github</option>
+                </select>
                 <div id="datepicker" class="picker-bd-view" style="margin-bottom: 65px;">
                     <span id="datepicker-heading">Created On</span><br />
                     <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
@@ -211,5 +216,6 @@
 {
     <script src="~/Scripts/js/WaitingPopup.js"></script>
     <script src="~/Scripts/js/daterangepicker.js"></script>
+<script src="~/Scripts/js/bootStrap-Multiselect.js"></script>
     <script src="~/Scripts/queryresult.js"></script>
 }

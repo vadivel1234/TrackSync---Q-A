@@ -35,6 +35,10 @@ $("#searchtext").keydown(function (e) {
 
 $(document).ready(function () {
 
+    $(".select-dropdown").change(function () {
+        GridSearch();
+    });
+
     $('#reportrange').daterangepicker({
         startDate: startDate,
         endDate: endDate,
@@ -76,6 +80,7 @@ function GridSearch() {
                 this.model.query._params.push({ key: "$field", value: $('#searchtext').val().trim() });
                 $(".searchresult").css("display", "block");
                 $("#gridsearchResult").showWaitingPopUp();
+                this.model.query._params.push({ key: "$source", value: $(".select-dropdown option:selected").text() });
                 if (startDate != null && endDate != null) {
                     this.model.query._params.push({ key: "$startdate", value: startDate });
                     this.model.query._params.push({ key: "$enddate", value: endDate });

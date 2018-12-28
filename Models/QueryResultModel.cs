@@ -29,7 +29,7 @@ namespace WebApplication1.Models
         List<QueryDetails> queriesInformation = new List<QueryDetails>();
 
         IEnumerable<QueryDetails> QueriesInformationEnumerable;
-        public List<QueryDetails> GetSerarchQuereies(DataManager dataManager, string serachField, string startDate, string endDate)
+        public List<QueryDetails> GetSerarchQuereies(DataManager dataManager, string serachField, string startDate, string endDate,string source)
         {
             try
             {
@@ -52,6 +52,15 @@ namespace WebApplication1.Models
                 if (!string.IsNullOrEmpty(startDate) && !string.IsNullOrEmpty(endDate))
                 {
                     queriesInformation = queriesInformation.Where(x => x.creationDate >= FromDate && x.creationDate <= ToDate).ToList();
+                }
+
+                if(source == "Stackoverflow")
+                {
+                    queriesInformation = queriesInformation.Where(x => x.source == "StackOverflow").ToList();
+                }
+                else if(source == "Github")
+                {
+                    queriesInformation = queriesInformation.Where(x => x.source == "Github").ToList();
                 }
 
                 if (queriesInformation != null)
