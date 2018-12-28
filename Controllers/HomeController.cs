@@ -17,8 +17,9 @@ namespace WebApplication1.Controllers
 
         public JsonResult SearchCollection(DataManager dataManager, string field)
         {
-            var list = QueryResultModel.GetStackOverflowQueries(field);
-            var customerCollection = Json(new { result = list, count = list.Count }, JsonRequestBehavior.AllowGet);
+            QueryResultModel query = new QueryResultModel();
+            var list = query.GetSerarchQuereies(dataManager, field);
+            var customerCollection = Json(new { result = list, count = query.totalCount }, JsonRequestBehavior.AllowGet);
             customerCollection.MaxJsonLength = int.MaxValue;
             return customerCollection;
         }

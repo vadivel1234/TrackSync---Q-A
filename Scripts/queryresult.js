@@ -6,9 +6,9 @@ $(document).on("click", "#searchbutton", function (event) {
     }
 });
 
-$("#searchbutton").keydown(function (e) {
+$("#searchtext").keydown(function (e) {
     if (e.keyCode == 13) {
-        var sqlQuery = $('#searchbutton').val().trim();
+        var sqlQuery = $('#searchtext').val().trim();
         if (sqlQuery != null && sqlQuery != "") {
             GridSearch()
         }
@@ -31,14 +31,19 @@ function GridSearch() {
             pageSettings: { pageSize: 10 },
             actionBegin: function (args) {
                 $(".searchresult").css("display", "block");
+                $("#search-section").showWaitingPopUp();
+            },
+            actionComplete: function (args) {
+                $("#search-section").removeWaitingPopUp();
             },
             columns: [
-                        { field: "source", headerText: "Source", width: 90 },
-                        { field: "questionID", headerText: 'Question Id', width: 90 },
-                        { field: "title", headerText: 'Title', width: 80 },
-                         { field: "creationDate", headerText: 'Created Date', format: "{0:MM/dd/yyyy}", width: 80 },
-                        { field: "viewCount", headerText: 'View Count', width: 80 },
-                        { field: "Score", headerText: 'Score', width: 80 }
+                        { field: "source", headerText: "Source", width: 40 },
+                        { field: "questionID", headerText: 'Question Id', width: 50, template: "<a href='{{:link}}' target='_blank'>{{:questionID}}</a>" },
+                        { field: "title", headerText: 'Title', width: 80, template: "<a href='{{:link}}' target='_blank'>{{:title}}</a>" },
+                        { field: "creationDate", headerText: 'Created Date', format: "{0:MM/dd/yyyy}", width: 40 },
+                        { field: "lastActivityDate", headerText: 'Last Activity', format: "{0:MM/dd/yyyy}", width: 40 },
+                        { field: "viewCount", headerText: 'View Count', width: 30 },
+                        { field: "Score", headerText: 'Score', width: 30 }
 
             ]
         });

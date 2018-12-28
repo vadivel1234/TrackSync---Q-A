@@ -4,6 +4,9 @@
 
 @section Style{
     <style>
+          #gridsearchResult_WaitingPopup{
+                display: none !important;
+            }
        #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;
@@ -35,6 +38,10 @@
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }
+
+    #gridsearchResult_WaitingPopup{
+        display: none;
+    }
     </style>
 }
 
@@ -128,6 +135,8 @@
 
 @section scripts
 { 
+
+<script src="~/Scripts/js/WaitingPopup.js"></script>
 <script src="~/Scripts/queryresult.js"></script>
 }
 
