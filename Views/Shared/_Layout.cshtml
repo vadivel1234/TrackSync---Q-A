@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="~/Home/">Syncfusion</a>
+            <a class="navbar-brand" style="margin-left: -75px;" href="~/Home/">Syncfusion</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,67 +54,20 @@
         @RenderBody()
         @RenderSection("BodySection", required: false)
 
-        <!-- The content of your page would go here. -->
-        <footer class="footer-distributed">
-            <div class="footer-left">
-                <h3>Company<span>logo</span></h3>
-                <p class="footer-links">
-                    <a href="~/Home/">Home</a>
-                    ·
-                    <a href="https://blog.syncfusion.com/">Blog</a>
-                    ·
-                    <a href="https://www.syncfusion.com/sales/products">Pricing</a>
-                    ·
-                    <a href="https://www.syncfusion.com/company/about-us">About</a>
-                    ·
-                    <a href="https://www.syncfusion.com/faq">Faq</a>
-                    ·
-                    <a href="https://www.syncfusion.com/support/directtrac/incidents/newincident">Contact</a>
-                </p>
-                <p class="footer-company-name">Copyright © 2001 - 2018 Syncfusion Inc. All Rights Reserved</p>
-            </div>
-            <div class="footer-center">
-                <div>
-                    <i class="fa fa-map-marker"></i>
-                    <p><span>EYMARD Complex</span> AJ 217, 4th Avenue, Shanthi Colony <span>Chennai-40</span></p>
-                </div>
-                <div>
-                    <i class="fa fa-phone"></i>
-                    <p>US: +1 919.481.1974</p>
-                </div>
-                <div>
-                    <i class="fa fa-envelope"></i>
-                    <p><a href="mailto:info@syncfusion.com">info@syncfusion.com</a></p>
-                </div>
-            </div>
-            <div class="footer-right">
-                <p class="footer-company-about">
-                    <span>About the company</span>
-                    Founded in 2001 and headquartered in Research Triangle Park, N.C., Syncfusion has more than 13,000 customers and more than 1 million users, including large financial institutions, Fortune 500 companies, and global IT consultancies.
-
-                    Today we provide 1,000+ controls and frameworks for web, mobile, and desktop development. We provide ready-to-deploy enterprise software for dashboards, reports, data integration, and big data processing. Many customers have saved millions in licensing fees by deploying our software.
-                </p>
-                <div class="footer-icons">
-                    <a href="https://www.facebook.com/Syncfusion"><i class="fa fa-facebook"></i></a>
-                    <a href="https://twitter.com/Syncfusion"><i class="fa fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/syncfusion?trk=top_nav_home"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
-        </footer>
+        
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
+    @RenderSection("scripts", required: false)
 
     @Html.EJ().ScriptManager()
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.sessionall.min.js?v1" defer></script>
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/MicrosoftMvcAjax.js" defer></script>
     <script src="https://cdn.syncfusion.com/scripts/jquery/Integrity/jquery.all.new.min.js?v1"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="~/Scripts/js/jsrender.min.js"></script>
-    <script src="//cdn.syncfusion.com/scripts/components/essentialjs/ej.grid.all_15.min.js"></script>
-
-    @RenderSection("scripts", required: false)
+    <script src="https://cdn.syncfusion.com/scripts/components/essentialjs/ej.grid.all_15.min.js"></script>
 </body>
 </html>
